@@ -1,6 +1,13 @@
 #include <iostream>
 #include <string>
 
+void returnA(int amount) // This example function returns the letter "a" as many times as it is written when the user calls the function
+{
+    for (int i = 0; i < amount; i++) {
+       std::cout << "a" << std::endl;
+    }
+}
+
 int main()
 {
     std::cout << "Hello world.\n" << std::endl;
@@ -34,9 +41,42 @@ int main()
 
     std::cout << sizeof(int) << '\n'; // Will print out the size of the variables, in this scenario it's 4 bytes.
 
+    std::cout
+        << "This line works too, but why?"; // Well because whitespace and formatting in C++ is great!
     
+    std::string formatting = "random";
+    std::string should     = "random";
+    std::string be         = "random";
+    std::string done       = "random";
+    std::string like       = "random";
+    std::string dis        = "random";
+    // You can see that it's way better like this, right?
 
+    ///////////////////////////
+    // IMPORTANT MEMORY RULE //
+    // INT: 2-4 BYTES        //
+    // FLOAT: 4 BYTES        //
+    // DOUBLE: 8 BYTES       //
+    // CHAR: 1 BYTE          //
+    ///////////////////////////
 
+    ///////////////////////////       //////////////////////////       /////////////////////////////
+    // OPERATORS             //       // ASSIGNMENT OPERATORS //       // COMPARISON OPERATORS    //
+    // + for addition        //       // += 3 = (x=x+3)       //       // == for equal to         //
+    // - for subtraction     //       // -= 3 = (x=x-3)       //       // != for not equal to     //
+    // * for multiplication  //       // *= 3 = (x=x*3)       //       // > for greater than      //
+    // / for division        //       // /= 3 = (x=x/3)       //       // < for less than         //
+    // % for modulus         //       // %= 3 = (x=x&3)       //       // >= for greater or equal //
+    // ++ for increment      //       //                      //       // <= for less or equal    //
+    // -- for decrement      //       //                      //       //                         //
+    // && for and            //       //                      //       //                         //
+    // || for or             //       //                      //       //                         //
+    // ! for not             //       //                      //       //                         //
+    ///////////////////////////       //////////////////////////       /////////////////////////////
+
+    // IMPORTANT RULE, std::cin uses >>, std:cout uses <<
+
+    returnA(12);
 
 
     return 0;
