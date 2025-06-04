@@ -1,12 +1,20 @@
 #include <iostream>
 #include <string>
 
+#include "surprise.h"
+
+#define SEVEN 7 // Replaces every instance of "SEVEN" with the integer 7, also used to create constants
+
+using namespace std; // If you dont want to write std:: at the start of each line, use this! Don't use functions with the namespace though.
+
 void returnA(int amount) // This example function returns the letter "a" as many times as it is written when the user calls the function
-{
+{ // Note that "int amount" is a local variable and does not yield anything outside of the function!
     for (int i = 0; i < amount; i++) {
        std::cout << "a" << std::endl;
     }
 }
+
+string globalVar = "This is a global variable which is defined outside the function.";
 
 int main()
 {
@@ -42,7 +50,7 @@ int main()
     std::cout << sizeof(int) << '\n'; // Will print out the size of the variables, in this scenario it's 4 bytes.
 
     std::cout
-        << "This line works too, but why?"; // Well because whitespace and formatting in C++ is great!
+        << "This line works too, but why?\n"; // Well because whitespace and formatting in C++ is great!
     
     std::string formatting = "random";
     std::string should     = "random";
@@ -51,6 +59,8 @@ int main()
     std::string like       = "random";
     std::string dis        = "random";
     // You can see that it's way better like this, right?
+
+    // SUMMARY FOR CHAPTER 1: https://www.learncpp.com/cpp-tutorial/chapter-1-summary-and-quiz/
 
     ///////////////////////////
     // IMPORTANT MEMORY RULE //
@@ -76,8 +86,62 @@ int main()
 
     // IMPORTANT RULE, std::cin uses >>, std:cout uses <<
 
-    returnA(12);
+    returnA(12); // "a" gets printed the amount of times the value is described in returnA's function parentheses.
+
+    int r{ 8 }; // the 'r' variable starts its lifetime here
+    returnA(r);
+
+    // RULE, void function cannot return anything, and int functions require something to be returned.
+
+    /* RULE, avoid creating functions after the main function, compiler doesn't understand this in sequence.
+        If you need to create functions like this, declare the first line beforehand, and then the body after the function like this: */
+
+    /* ------------------------------------------------------------------------------
+
+    int add(int x, int y);
+
+    int main()
+    {
+        std::cout << "The sum of 3 and 4 is: " << add(3, 4) << '\n';
+        return 0;
+    }
+
+    int add(int x, int y)
+    {
+        return x + y;
+    }   
+
+    ------------------------------------------------------------------------------ */
+
+    #ifdef SEVEN
+        cout << "SEVEN IS PRINTED!\n"; // Since "SEVEN" is defined, this line should be printed
+    #endif
+
+    #if 0 // #if 0 prevents code from being compiled, it's like a clearer multi-line comment.
+        cout << "This line will be excluded, just like you.";
+    #endif
+
+    #ifdef WORKING // You can see that including surprise.h works because C++ allows custom header files, and we defined a macro in the header
+        cout << WORKING;
+    #endif
+
+    // If you have to use the same header in multiple spaces, use header guards like this:
+
+    /*
+    #ifndef THIS_MACRO
+    #define THIS_MACRO
+
+    // Have your code here if necessary
+
+    #endif  
+    */
+
+    // If you don't know how to create a program from this syntax yet, don't worry
+    // Follow this link here: https://www.learncpp.com/cpp-tutorial/how-to-design-your-first-programs/
+    // SUMMARY FOR CHAPTER 2: https://www.learncpp.com/cpp-tutorial/chapter-2-summary-and-quiz/
+
+
 
 
     return 0;
-}
+} // the 'r' variable goes out of scope after the function is ended, and in other functions it would be out of scope.
